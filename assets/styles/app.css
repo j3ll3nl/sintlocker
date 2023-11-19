@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.background-blue {
+    background-color: lightblue;
+}
+
+.background-yellow {
+    background-color: yellow;
+}
+
+.background-green {
+    background-color: green;
+}
+
+.background-lightergreen {
+    background-color: lightgreen;
+}
+
+.background-lighterpink {
+    background-color: lightpink;
+}
+
+.background-lighterpurple {
+    background-color: mediumpurple;
+}
+
+.background-orange {
+    background-color: orange;
+}
+
+.background-pink {
+    background-color: deeppink;
+}
+
+.background-purple {
+    background-color: purple;
+}
+
+.background-red {
+    background-color: red;
+}

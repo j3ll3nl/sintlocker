@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Alle Slote nog aan toe!{% endblock %}
+
+{% block body %}
+    <section {{ stimulus_target('position', 'background') }} class="flex h-screen background-yellow" {{ stimulus_controller('position') }}>
+        <div class="m-auto w-1/2 text-center">
+                <h1 {{ stimulus_target('position', 'digit') }} style="font-size: 18rem; line-height: 1;"
+                    class="font-extrabold contrast-100 text-black">1</h1>
+                <h2 {{ stimulus_target('position', 'lock') }} class="text-8xl font-extrabold contrast-100 text-yellow-400">1</h2>
+                <h2 {{ stimulus_target('position', 'lockColumn') }} class="text-7xl font-extrabold contrast-100 text-red-700">Rij: a</h2>
+                <div class="hidden" {{ stimulus_target('position', 'barcode') }}></div>
+        </div>
+    </section>
+
+{% endblock %}

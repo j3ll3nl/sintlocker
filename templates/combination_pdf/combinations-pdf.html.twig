@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Sloten combinaties{% endblock %}
+
+{% block body %}
+    <style>
+        body {
+            margin: 0;
+            margin-left: 10px;
+            padding: 0;
+        }
+        .cell {
+            width: 33%;
+            text-align: center;
+            float: left;
+        }
+
+        .digit {
+            margin: 0 auto;
+            padding: 77px;
+            font-size: 100px;
+        }
+
+        .qr img {
+            width: 75px;
+        }
+    </style>
+    <table class="wrapper">
+        {% for combination in combinations %}
+        <div class="cell">
+            <div class="digit">{{ combination.position.digit }}</div>
+            <div class="qr"><img src="{{ combination.base64QrCode }}" alt="QR Code" /></div>
+        </div>
+        {% endfor %}
+    </table>
+{% endblock %}
