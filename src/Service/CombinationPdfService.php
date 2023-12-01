@@ -10,7 +10,7 @@ use App\Repository\PositionsRepository;
 class CombinationPdfService
 {
     public function __construct(
-        private PositionsRepository $positionsRepository
+        private readonly PositionsRepository $positionsRepository
     )
     {}
 

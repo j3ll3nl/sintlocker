@@ -15,8 +15,8 @@ use Symfony\Component\Routing\Annotation\Route;
 class CombinationPdfController extends AbstractController
 {
     public function __construct(
-        private Pdf                   $knpSnappyPdf,
-        private CombinationPdfService $combinationPdfService
+        private readonly Pdf          $knpSnappyPdf,
+        private readonly CombinationPdfService $combinationPdfService
     )
     {
     }
@@ -26,13 +26,22 @@ class CombinationPdfController extends AbstractController
     {
         $combinations = $this->combinationPdfService->getCombinationsForLock($lock);
 
-        if (null === $combinations) {
+        if (empty($combinations)) {
             throw new NotFoundHttpException();
         }
 
-        $html = $this->renderView('combination_pdf/combinations-pdf.html.twig', array(
-            'combinations' => array_map(fn($combination) => new CombinationPositionDto($combination, (new QRCode())->render($combination->getLock() . $combination->getLockColumn())), $combinations),
-        ));
+        $html = $this->renderView(
+            'combination_pdf/combinations-pdf.html.twig',
+            array(
+                'combinations' => array_map(
+                    fn($combination) => new CombinationPositionDto(
+                        $combination,
+                        (new QRCode())->render($combination->getLock() . $combination->getLockColumn())
+                    ),
+                    $combinations
+                ),
+            )
+        );
 
         return new PdfResponse(
             $this->knpSnappyPdf
